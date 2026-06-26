@@ -11,6 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Train and export the model artifacts at build time, so the API
+# always has churn_model.pkl / encoders.pkl / model_metadata.pkl
+# available at startup.
+RUN python models/train_export_model.py
+
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
