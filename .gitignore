@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+models/churn_model.pkl
+models/encoders.pkl
+models/model_metadata.pkl
+.env
+*.egg-info/
+.DS_Store
+venv/
+.vscode/
