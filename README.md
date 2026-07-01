@@ -1,6 +1,6 @@
 # AI Model Serving & Monitoring Platform
 
-A production-style FastAPI service for serving a machine learning model, instrumented end-to-end with Prometheus metrics and a provisioned Grafana dashboard — built to demonstrate the operational side of MLOps, not just model training.
+A production style FastAPI service for serving a machine learning model, instrumented end to end with Prometheus metrics and a provisioned Grafana dashboard — built to demonstrate the operational side of MLOps.
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688)
@@ -14,13 +14,13 @@ A production-style FastAPI service for serving a machine learning model, instrum
 Training a model is one part of MLOps — **operating it reliably in production is the harder part**. This project focuses entirely on that second half:
 
 - **REST inference API** built with FastAPI and strict Pydantic request validation (rejects malformed input before it reaches the model)
-- **Prometheus instrumentation** — custom metrics for prediction counts, latency distribution, error rates, and live churn-probability values, exposed on a standard `/metrics` endpoint
-- **Provisioned Grafana dashboard** — auto-loads on startup via Docker volume mounts, no manual dashboard setup required
+- **Prometheus instrumentation** — custom metrics for prediction counts, latency distribution, error rates, and live churn probability values, exposed on a standard `/metrics` endpoint
+- **Provisioned Grafana dashboard** — auto loads on startup via Docker volume mounts, no manual dashboard setup required
 - **Health checks** — a `/health` endpoint plus a Docker `HEALTHCHECK` directive, so orchestrators (Kubernetes, Docker Swarm) can detect a degraded service automatically
 - **Full containerized stack** — API + Prometheus + Grafana orchestrated together with a single `docker-compose up`
 - **CI** — GitHub Actions runs the full test suite and a Docker build on every push
 
-The model itself is the churn classifier from my [churn-mlops-pipeline](https://github.com/mian-yahya-gul/churn-mlops-pipeline) project, trained on the real IBM Telco Customer Churn dataset — this project picks up where that one ends, focused on what happens *after* a model is trained.
+The model itself is the churn classifier from my [churn-mlops-pipeline](https://github.com/mian-yahya-gul/churn-mlops-pipeline) project, trained on the real IBM Telco Customer Churn dataset, this project picks up where that one ends, focused on what happens *after* a model is trained.
 
 ## Architecture
 
@@ -53,7 +53,7 @@ The model itself is the churn classifier from my [churn-mlops-pipeline](https://
 
 ## Running it
 
-### Docker Compose (full stack — recommended)
+### Docker Compose (full stack recommended)
 
 ```bash
 docker-compose up --build
@@ -61,7 +61,7 @@ docker-compose up --build
 
 - API: `http://localhost:8000/docs` (interactive Swagger UI)
 - Prometheus: `http://localhost:9090`
-- Grafana: `http://localhost:3000` (login: `admin` / `admin`) — the "Churn Prediction API — Monitoring" dashboard is pre-loaded
+- Grafana: `http://localhost:3000` (login: `admin` / `admin`) — the "Churn Prediction API  Monitoring" dashboard is pre loaded
 
 ### Local (without Docker)
 
